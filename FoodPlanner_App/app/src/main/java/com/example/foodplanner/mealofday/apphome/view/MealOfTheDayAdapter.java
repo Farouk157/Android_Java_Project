@@ -7,52 +7,67 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.foodplanner.R;
 import com.example.foodplanner.mealofday.apphome.model.Meal;
-import com.bumptech.glide.Glide;
+import com.example.foodplanner.mealofday.mealdetails.view.MealDetailsFragment;
 
 import java.util.List;
 
 public class MealOfTheDayAdapter extends RecyclerView.Adapter<MealOfTheDayAdapter.MealViewHolder> {
 
-    private List<Meal> meals;
+    private List<Meal> mealList;
+    private FragmentActivity activity;
+    private OnMealClickListener listener;
 
-    public MealOfTheDayAdapter(List<Meal> meals) {
-        this.meals = meals;
+    // Define the interface for meal click events
+    public interface OnMealClickListener {
+        void onMealClick(Meal meal);
+    }
+
+    public MealOfTheDayAdapter(List<Meal> mealList, FragmentActivity activity, OnMealClickListener listener) { // Modify constructor
+        this.mealList = mealList;
+        this.activity = activity;
+        this.listener = listener; // Initialize listener
     }
 
     @NonNull
     @Override
     public MealViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_meal, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_meal, parent, false);
         return new MealViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MealViewHolder holder, int position) {
-        Meal meal = meals.get(position);
-        holder.mealName.setText(meal.getStrMeal());
+        Meal meal = mealList.get(position);
+        holder.tvMealName.setText(meal.getStrMeal());
+
         Glide.with(holder.itemView.getContext())
                 .load(meal.getStrMealThumb())
-                .into(holder.mealImage);
+                .into(holder.ivMealImage);
+
+        holder.itemView.setOnClickListener(v -> {
+            listener.onMealClick(meal);
+        });
     }
 
     @Override
     public int getItemCount() {
-        return meals.size();
+        return mealList.size();
     }
 
-    static class MealViewHolder extends RecyclerView.ViewHolder {
-        TextView mealName;
-        ImageView mealImage;
+    public static class MealViewHolder extends RecyclerView.ViewHolder {
+        TextView tvMealName;
+        ImageView ivMealImage;
 
         public MealViewHolder(@NonNull View itemView) {
             super(itemView);
-            mealName = itemView.findViewById(R.id.tv_meal_name);
-            mealImage = itemView.findViewById(R.id.iv_meal_image);
+            tvMealName = itemView.findViewById(R.id.tv_meal_name);
+            ivMealImage = itemView.findViewById(R.id.iv_meal_image);
         }
     }
 }

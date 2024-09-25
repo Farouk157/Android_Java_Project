@@ -1,40 +1,26 @@
 package com.example.foodplanner.mealofday.apphome.model;
 
-import java.util.List;
+import java.io.Serializable;
 
-public class Meal {
-    private String idMeal;
+public class Meal implements Serializable {
     private String strMeal;
-    private String strMealThumb;
     private String strArea;
-    private List<String> ingredients; // Store ingredients as a list
     private String strInstructions;
+    private String strMealThumb;
     private String strYoutube;
+    private String[] ingredients; // array of ingredient names
+    private String[] ingredientImages; // array of ingredient images
 
-    // Getters and Setters
+    // Default serial version ID (optional but recommended)
+    private static final long serialVersionUID = 1L;
 
-    public String getIdMeal() {
-        return idMeal;
-    }
-
-    public void setIdMeal(String idMeal) {
-        this.idMeal = idMeal;
-    }
-
+    // Getters and setters for all fields
     public String getStrMeal() {
         return strMeal;
     }
 
     public void setStrMeal(String strMeal) {
         this.strMeal = strMeal;
-    }
-
-    public String getStrMealThumb() {
-        return strMealThumb;
-    }
-
-    public void setStrMealThumb(String strMealThumb) {
-        this.strMealThumb = strMealThumb;
     }
 
     public String getStrArea() {
@@ -45,20 +31,20 @@ public class Meal {
         this.strArea = strArea;
     }
 
-    public List<String> getIngredients() {
-        return ingredients;
-    }
-
-    public void setIngredients(List<String> ingredients) {
-        this.ingredients = ingredients;
-    }
-
     public String getStrInstructions() {
         return strInstructions;
     }
 
     public void setStrInstructions(String strInstructions) {
         this.strInstructions = strInstructions;
+    }
+
+    public String getStrMealThumb() {
+        return strMealThumb;
+    }
+
+    public void setStrMealThumb(String strMealThumb) {
+        this.strMealThumb = strMealThumb;
     }
 
     public String getStrYoutube() {
@@ -68,6 +54,20 @@ public class Meal {
     public void setStrYoutube(String strYoutube) {
         this.strYoutube = strYoutube;
     }
+
+    public String[] getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(String[] ingredients) {
+        this.ingredients = ingredients;
+    }
+
+    public String[] getIngredientImages() {
+        return ingredientImages;
+    }
+
+    public void setIngredientImages(String[] ingredientImages) {
+        this.ingredientImages = ingredientImages;
+    }
 }
-
-

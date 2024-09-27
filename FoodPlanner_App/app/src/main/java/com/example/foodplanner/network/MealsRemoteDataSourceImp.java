@@ -8,6 +8,7 @@ import com.example.foodplanner.searchoption.ingredients.model.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -50,11 +51,13 @@ public class MealsRemoteDataSourceImp implements MealsRemoteDataSource{
 
     @Override
     public void fetchCategories(NetworkCallBack<List<Category>> callBack) {
+        List<Category>available_categories = new ArrayList<>();
         Call<CategoryResponse> call = mealService.getCategories();
         call.enqueue(new Callback<CategoryResponse>() {
             @Override
             public void onResponse(Call<CategoryResponse> call, Response<CategoryResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
+//                  available_categories.add(response.body().getMeals().get(0));
                     callBack.onSuccess(response.body().getCategories());
                 } else {
                     callBack.onFailure("Error fetching Categories");

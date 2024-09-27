@@ -18,7 +18,7 @@ public class CategoryPresenter {
         this.dataSource = dataSource;
     }
 
-    public void fetchallCategories(){
+    public void fetchAllCategories(){
         dataSource.fetchCategories(new NetworkCallBack<List<Category>>(){
             // view.showLoading() // roh zaweed el loading gif hena
             @Override

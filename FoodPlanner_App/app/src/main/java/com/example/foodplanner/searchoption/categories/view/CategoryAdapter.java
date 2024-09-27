@@ -37,9 +37,9 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
         if (categories != null && !categories.isEmpty()) {
             Category category = categories.get(position);
             if (category != null) {
-                holder.categoryName.setText(category.getStrCategoryName());
+                holder.categoryName.setText(category.getStrCategory());
                 Glide.with(holder.itemView.getContext())
-                        .load(category.getStrCategoryImage())
+                        .load(category.getStrCategoryThumb())
                         .into(holder.categoryImage);
             } else {
                 Log.e("CategoryAdapter", "Category object is null at position: " + position);

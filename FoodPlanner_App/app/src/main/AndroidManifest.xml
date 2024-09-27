@@ -22,6 +22,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!-- Add CategoriesActivity here -->
+        <activity
+            android:name=".searchoption.categories.view.CategoriesActivity"
+            android:exported="true">
+        </activity>
     </application>
 
 </manifest>

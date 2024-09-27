@@ -1,20 +1,41 @@
 package com.example.foodplanner.searchoption.categories.model;
 
 public class Category {
-    private String name;
-    private String imageUrl;
+    public String idCategory;
+    public String strCategory;
+    public String strCategoryThumb;
+    public String strCategoryDescription;
 
-    public Category(String name, String imageUrl) {
-        this.name = name;
-        this.imageUrl = imageUrl;
+
+    public String getIdCategory() {
+        return idCategory;
     }
 
-    public String getStrCategoryName() {
-        return name;
+    public void setIdCategory(String idCategory) {
+        this.idCategory = idCategory;
     }
 
-    public String getStrCategoryImage() {
-        return imageUrl;
+    public String getStrCategory() {
+        return strCategory;
     }
 
+    public void setStrCategory(String strCategory) {
+        this.strCategory = strCategory;
+    }
+
+    public String getStrCategoryThumb() {
+        return strCategoryThumb;
+    }
+
+    public void setStrCategoryThumb(String strCategoryThumb) {
+        this.strCategoryThumb = strCategoryThumb;
+    }
+
+    public String getStrCategoryDescription() {
+        return strCategoryDescription;
+    }
+
+    public void setStrCategoryDescription(String strCategoryDescription) {
+        this.strCategoryDescription = strCategoryDescription;
+    }
 }

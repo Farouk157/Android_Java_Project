@@ -50,6 +50,7 @@ public class SearchOptionsFragment extends Fragment implements SearchOptionsView
 
     @Override
     public void navigateToCategories() {
+
         startActivity(new Intent(getActivity(), CategoriesActivity.class));
     }
 

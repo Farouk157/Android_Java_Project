@@ -7,8 +7,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.foodplanner.R;
-import com.example.foodplanner.mealofday.apphome.presenter.MealOfTheDayPresenter;
-import com.example.foodplanner.mealofday.apphome.view.MealOfTheDayAdapter;
 import com.example.foodplanner.searchoption.categories.model.Category;
 import com.example.foodplanner.searchoption.categories.presenter.CategoryPresenter;
 import com.example.foodplanner.network.*;
@@ -32,7 +30,7 @@ public class CategoriesActivity extends AppCompatActivity implements CategoriesV
 
         presenter = new CategoryPresenter(this, new MealsRemoteDataSourceImp(RandomMealClient.getMealService()));
 
-        presenter.fetchallCategories();
+        presenter.fetchAllCategories();
 
     }
 

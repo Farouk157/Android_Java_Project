@@ -1,14 +1,14 @@
 package com.example.foodplanner.network;
 
-import com.example.foodplanner.mealofday.apphome.model.*;
-import com.example.foodplanner.searchoption.categories.model.Category;
+import com.example.foodplanner.mealofday.apphome.model.Meal;
+import com.example.foodplanner.mealofday.apphome.model.MealResponse;
 import com.example.foodplanner.searchoption.categories.model.*;
+import com.example.foodplanner.searchoption.categories.model.Category;
 import com.example.foodplanner.searchoption.countries.model.*;
 import com.example.foodplanner.searchoption.ingredients.model.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -72,14 +72,14 @@ public class MealsRemoteDataSourceImp implements MealsRemoteDataSource{
     }
 
     @Override
-    public void fetchCountries(NetworkCallBack<List<Country>> callBack) {
+    public void fetchCountries(NetworkCallBack<List<Meal>> callBack) {
         Call<CountryResponse> call = mealService.getCountries();
-        call.enqueue(new Callback<CountryResponse>(){
-
+        call.enqueue(new Callback<CountryResponse>() {
             @Override
             public void onResponse(Call<CountryResponse> call, Response<CountryResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
-                    callBack.onSuccess(response.body().getCountries());
+                    List<Meal> countriesWithFlags = response.body().getCountries();
+                    callBack.onSuccess(countriesWithFlags);
                 } else {
                     callBack.onFailure("Error fetching Countries");
                 }
@@ -92,8 +92,9 @@ public class MealsRemoteDataSourceImp implements MealsRemoteDataSource{
         });
     }
 
+
     @Override
-    public void fetchIngredients(NetworkCallBack<List<Ingredient>> callBack){
+    public void fetchIngredients(NetworkCallBack<List<Meal>> callBack){
         Call<IngredientResponse> call = mealService.getIngredients();
         call.enqueue(new Callback<IngredientResponse>(){
 

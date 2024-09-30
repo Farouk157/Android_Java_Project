@@ -1,9 +1,8 @@
 package com.example.foodplanner.mealofday.apphome.presenter;
 
+import com.example.foodplanner.mealofday.apphome.model.Meal;
 import com.example.foodplanner.mealofday.apphome.view.*;
 import com.example.foodplanner.network.*;
-import com.example.foodplanner.mealofday.apphome.model.Meal;
-
 import java.util.List;
 
 public class MealOfTheDayPresenter {

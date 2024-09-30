@@ -1,6 +1,6 @@
 package com.example.foodplanner.mealofday.apphome.view;
 
-import com.example.foodplanner.mealofday.apphome.model.*;
+import com.example.foodplanner.mealofday.apphome.model.Meal;
 
 import java.util.List;
 

@@ -1,12 +1,12 @@
 package com.example.foodplanner.searchoption.ingredients.model;
 
-
+import com.example.foodplanner.mealofday.apphome.model.Meal;
 import java.util.List;
 
 public class IngredientResponse {
-    private List<Ingredient> ingredients;
+    private List<Meal> meals;
 
-    public List<Ingredient> getIngredients() {
-        return ingredients;
+    public List<Meal> getIngredients() {
+        return meals;
     }
 }

@@ -11,7 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
 import com.example.foodplanner.R;
 import com.example.foodplanner.searchoption.categories.model.Category;
 
@@ -41,7 +40,6 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
                 holder.categoryName.setText(category.getStrCategory());
                 Glide.with(holder.itemView.getContext())
                         .load(category.getStrCategoryThumb())
-                        .apply(RequestOptions.circleCropTransform()) // Apply circular crop
                         .into(holder.categoryImage);
             } else {
                 Log.e("CategoryAdapter", "Category object is null at position: " + position);
@@ -50,6 +48,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
             Log.e("CategoryAdapter", "Categories list is null or empty");
         }
     }
+
 
     @Override
     public int getItemCount() {
@@ -62,8 +61,8 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
 
         CategoryViewHolder(@NonNull View itemView) {
             super(itemView);
-            categoryName = itemView.findViewById(R.id.title_category);
-            categoryImage = itemView.findViewById(R.id.image_category);
+            categoryName = itemView.findViewById(R.id.category_name);
+            categoryImage = itemView.findViewById(R.id.category_image);
         }
     }
 }

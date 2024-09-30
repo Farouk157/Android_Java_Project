@@ -15,8 +15,6 @@ import com.bumptech.glide.Glide;
 import com.example.foodplanner.R;
 import com.example.foodplanner.mealofday.apphome.model.Meal;
 
-import java.io.Serializable;
-
 public class MealDetailsFragment extends Fragment {
 
     private TextView tvMealName, tvOriginCountry, tvInstructions;

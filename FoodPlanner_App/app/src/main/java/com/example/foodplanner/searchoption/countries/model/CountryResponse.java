@@ -1,13 +1,12 @@
 package com.example.foodplanner.searchoption.countries.model;
 
-
+import com.example.foodplanner.mealofday.apphome.model.*;
 import java.util.List;
 
 public class CountryResponse {
+    private List<Meal> meals;
 
-    private List<Country> countries;
-
-    public List<Country> getCountries() {
-        return countries;
+    public List<Meal> getCountries() {
+        return meals;
     }
 }

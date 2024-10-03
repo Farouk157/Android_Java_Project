@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".mealdetails.view.MealDetailsFragment">
+
+    <!-- ScrollView for scrollable content -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- CardView for Image and Meal Name -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:layout_marginTop="24dp"
+            android:layout_marginHorizontal="8dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <!-- Meal Image -->
+                    <ImageView
+                        android:id="@+id/iv_fav_meal_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="220dp"
+                        android:layout_marginBottom="16dp"
+                        android:contentDescription="Image of Meal"
+                        android:scaleType="centerCrop" />
+
+                    <!-- Meal Name (Centered) -->
+                    <TextView
+                        android:id="@+id/tv_fav_meal_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="16dp"
+                        android:text="Meal Name"
+                        android:textColor="#FF5722"
+                        android:textSize="30sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- Origin Country (Centered) -->
+        <TextView
+            android:id="@+id/tv_origin_country"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="16dp"
+            android:text="Original Country: Country Name"
+            android:textColor="#666666"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <!-- Favorite and Calendar Icons centered and resized -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/ib_favorite"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginEnd="24dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:backgroundTint="#009688"
+                android:contentDescription="Favorite Icon"
+                android:src="@drawable/ic_favorite" />
+
+            <ImageButton
+                android:id="@+id/ib_calendar"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:backgroundTint="#009688"
+                android:contentDescription="Calendar Icon"
+                android:src="@drawable/ic_calender" />
+        </LinearLayout>
+
+        <!-- Ingredient details TextView -->
+        <TextView
+            android:id="@+id/tv_ingredient_details"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Ingredient details"
+            android:textColor="#333333"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <!-- RecyclerView for ingredients list -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_ingredients_list"
+                android:layout_width="match_parent"
+                android:layout_height="280dp"
+                android:layout_marginTop="8dp"
+                android:scrollbars="vertical" />
+
+        <TextView
+            android:id="@+id/tv_meal_video_steps"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:text="Video For The Meal"
+            android:textColor="#333333"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <WebView
+            android:id="@+id/wv_video"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginBottom="16dp"
+            tools:ignore="WebViewLayout" />
+
+        <!-- Instructions Title -->
+
+            <!-- Step by step instructions -->
+            <TextView
+                android:id="@+id/tv_instructions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:text="Instructions:"
+                android:textColor="#333333"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+            android:id="@+id/tv_instruction_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="Detailed step-by-step instructions."
+            android:textColor="#444444"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+</ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>

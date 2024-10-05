@@ -18,14 +18,14 @@ public abstract class AppDataBase extends RoomDatabase {
     public AppDataBase() {
     }
     public abstract MealDAO mealDAO();
-    public abstract PlanDAO planDAO(); // New DAO for managing Plan
+    public abstract PlanDAO planDAO();
 
 
     public static synchronized AppDataBase getInstance(Context context) {
         if (instance == null) {
             instance = Room.databaseBuilder(context.getApplicationContext(),
                             AppDataBase.class, "mealsdb")
-                    .fallbackToDestructiveMigration() // Starting fresh without migration
+                    .fallbackToDestructiveMigration()
                     .build();
         }
         return instance;

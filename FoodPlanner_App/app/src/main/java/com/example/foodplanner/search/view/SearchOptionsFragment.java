@@ -22,11 +22,17 @@ import com.example.foodplanner.search.model.Category;
 import com.example.foodplanner.search.presenter.SearchOptionsPresenter;
 import com.example.foodplanner.mealsbycountry.view.*;
 import com.example.foodplanner.database.*;
+import androidx.appcompat.widget.SearchView;
+
 import java.util.ArrayList;
 import java.util.List;
+import androidx.fragment.app.FragmentTransaction;
+import com.example.foodplanner.mealbyname.view.*;
 
 
 public class SearchOptionsFragment extends Fragment implements SearchOptionsView, CategoryAdapter.CategoryClickListener, CountryAdapter.CountryClickListener, IngredientAdapter.IngredientClickListener{
+
+    private SearchView searchView;
 
     private SearchOptionsPresenter presenter_1;
     private SearchOptionsPresenter presenter_2;
@@ -54,6 +60,23 @@ public class SearchOptionsFragment extends Fragment implements SearchOptionsView
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        searchView = view.findViewById(R.id.search_bar);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                // Handle the query submit
+                openMealByNameFragment(query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                // Do nothing for text change
+                return false;
+            }
+        });
 
         // Initialize RecyclerViews
         catRecyclerView = view.findViewById(R.id.rv_categories);
@@ -158,5 +181,16 @@ public class SearchOptionsFragment extends Fragment implements SearchOptionsView
                 .replace(R.id.fragment_container, mealsByIngredientFragment)
                 .addToBackStack(null)
                 .commit();
+    }
+
+    private void openMealByNameFragment(String mealName) {
+        MealByNameFragment mealByNameFragment = new MealByNameFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("MEAL_NAME", mealName);
+        mealByNameFragment.setArguments(bundle);
+        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container, mealByNameFragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
 }

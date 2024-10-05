@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
 import com.example.foodplanner.R;
 import com.example.foodplanner.calendar.presenter.*;
 import com.example.foodplanner.model.Plan;
@@ -19,7 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class RetreiveScheduledMealsFragment extends Fragment {
+public class RetreiveScheduledMealsFragment extends Fragment implements CalendarOnRemoveClick{
     private RecyclerView recyclerView;
     private ScheduledMealAdapter scheduledMealAdapter;
     private RetreiveScheduledMealsPresenter presenter;
@@ -47,10 +49,10 @@ public class RetreiveScheduledMealsFragment extends Fragment {
         recyclerView = view.findViewById(R.id.recyclerViewScheduledMeals);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        scheduledMealAdapter = new ScheduledMealAdapter(getContext(), null); // Initialize with null or empty list
+        scheduledMealAdapter = new ScheduledMealAdapter(getContext(), null, this);
         recyclerView.setAdapter(scheduledMealAdapter);
 
-        // Fetch and observe scheduled meals from the presenter
+
         presenter.getScheduledMeals(type).observe(getViewLifecycleOwner(), new Observer<List<Plan>>() {
             @Override
             public void onChanged(List<Plan> meals) {
@@ -62,6 +64,8 @@ public class RetreiveScheduledMealsFragment extends Fragment {
                 scheduledMealAdapter.notifyDataSetChanged();
             }
         });
+
+        refreshScheduledMeals();
 
         return view;
     }
@@ -80,5 +84,26 @@ public class RetreiveScheduledMealsFragment extends Fragment {
         };
 
         requireActivity().getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(), callback);
+    }
+
+    @Override
+    public void onRemoveMealClick(Plan plan) {
+        presenter.removePlan(plan);
+        Toast.makeText(getContext(), "Meal removed successfully", Toast.LENGTH_SHORT).show();
+        refreshScheduledMeals();
+    }
+
+    private void refreshScheduledMeals() {
+        presenter.getScheduledMeals(type).observe(getViewLifecycleOwner(), new Observer<List<Plan>>() {
+            @Override
+            public void onChanged(List<Plan> meals) {
+                if (meals != null) {
+                    scheduledMealAdapter.setPlans(meals);
+                } else {
+                    scheduledMealAdapter.setPlans(new ArrayList<>()); // Set an empty list if meals are null
+                }
+                scheduledMealAdapter.notifyDataSetChanged();
+            }
+        });
     }
 }

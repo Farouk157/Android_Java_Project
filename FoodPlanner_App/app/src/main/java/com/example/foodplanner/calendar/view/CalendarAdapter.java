@@ -6,7 +6,6 @@ import android.view.ViewGroup;
 import com.example.foodplanner.R;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-//import com.example.foodplanner.calendar.view.*;
 import java.util.ArrayList;
 
 class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder>

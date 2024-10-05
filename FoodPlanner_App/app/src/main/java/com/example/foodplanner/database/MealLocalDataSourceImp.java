@@ -77,16 +77,16 @@ public class MealLocalDataSourceImp implements MealLocalDataSource {
 
     @Override
     public LiveData<List<Plan>> getMealsByDate(String date) {
-        return planDAO.getMealsByDate(date); // Use PlanDAO to get meals by date
+        return planDAO.getMealsByDate(date);
     }
 
     @Override
     public LiveData<List<Plan>> getScheduledMeals() {
-        return planDAO.getScheduledMeals(); // Use PlanDAO to get scheduled meals
+        return planDAO.getScheduledMeals();
     }
 
     @Override
     public LiveData<List<Plan>> getMealsByType(String type) {
-        return planDAO.getMealsByType(type); // Use PlanDAO to get meals by type
+        return planDAO.getMealsByType(type);
     }
 }

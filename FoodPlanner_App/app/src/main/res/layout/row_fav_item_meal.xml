@@ -37,7 +37,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/iv_fav_meal_image" />
 
-        <!-- First Additional TextView (e.g., Meal Description) -->
+
         <TextView
             android:id="@+id/tv_fav_meal_category"
             android:layout_width="wrap_content"
@@ -50,7 +50,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_fav_meal_name" />
 
-        <!-- Second Additional TextView (e.g., Meal Price) -->
+
         <TextView
             android:id="@+id/tv_fav_meal_country"
             android:layout_width="wrap_content"

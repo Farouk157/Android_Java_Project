@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -22,10 +23,15 @@ import java.util.List;
 public class ScheduledMealAdapter extends RecyclerView.Adapter<ScheduledMealAdapter.MealViewHolder> {
     private final Context context;
     private List<Plan> planList;
-
-    public ScheduledMealAdapter(Context context,List<Plan> planList) {
+    private CalendarOnRemoveClick listener;
+    public ScheduledMealAdapter(Context context,List<Plan> planList,  CalendarOnRemoveClick listener) {
         this.context = context;
         this.planList = (planList != null) ? planList : new ArrayList<>();
+        this.listener = listener;
+    }
+
+    public void setOnRemoveClickListener(CalendarOnRemoveClick listener) {
+        this.listener = listener;
     }
 
     public void setPlans(List<Plan> plans) {
@@ -42,11 +48,21 @@ public class ScheduledMealAdapter extends RecyclerView.Adapter<ScheduledMealAdap
 
     @Override
     public void onBindViewHolder(@NonNull MealViewHolder holder, int position) {
+        Plan currentPlan = planList.get(position);
         holder.mealNameTextView.setText(planList.get(position).getMeal().getStrMeal());
         holder.mealDateTextView.setText(planList.get(position).getScheduledDate());
         Glide.with(context).load(planList.get(position).getMeal().getStrMealThumb()).apply(new RequestOptions().override(150, 200)
                 )
                 .into(holder.mealImageView);
+
+        holder.removeMealButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (listener != null) {
+                    listener.onRemoveMealClick(currentPlan);
+                }
+            }
+        });
     }
 
     @Override
@@ -60,11 +76,13 @@ public class ScheduledMealAdapter extends RecyclerView.Adapter<ScheduledMealAdap
         private TextView mealNameTextView;
         private TextView mealDateTextView;
         private CardView cardView;
+        private Button removeMealButton;
         public MealViewHolder(@NonNull View itemView) {
             super(itemView);
             mealImageView = itemView.findViewById(R.id.mealImage);
             mealNameTextView = itemView.findViewById(R.id.mealName);
             mealDateTextView = itemView.findViewById(R.id.mealDate);
+            removeMealButton = itemView.findViewById(R.id.removeButton);
 
         }
 

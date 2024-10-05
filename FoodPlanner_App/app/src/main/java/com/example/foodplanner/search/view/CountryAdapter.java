@@ -15,7 +15,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.example.foodplanner.R;
 import java.util.List;
 
-import com.example.foodplanner.mealofday.model.Meal;
+import com.example.foodplanner.model.Meal;
 
 public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.CountryViewHolder> {
 

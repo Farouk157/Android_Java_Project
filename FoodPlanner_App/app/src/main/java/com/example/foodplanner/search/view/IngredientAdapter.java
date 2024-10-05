@@ -15,7 +15,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.example.foodplanner.R;
 
 import java.util.List;
-import com.example.foodplanner.mealofday.model.Meal;
+import com.example.foodplanner.model.Meal;
 public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.IngredientViewHolder> {
 
     private List<Meal> ingredients;

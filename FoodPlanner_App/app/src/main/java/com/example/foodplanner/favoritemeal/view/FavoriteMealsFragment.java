@@ -9,15 +9,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.LifecycleOwner;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.foodplanner.R;
 import com.example.foodplanner.favoritemeal.presenter.FavoriteMealsPresnter;
 import com.example.foodplanner.mealdetails.view.MealDetailsFragment;
-import com.example.foodplanner.mealofday.model.Meal;
-import com.example.foodplanner.mealofday.model.Repository;
+import com.example.foodplanner.model.Meal;
+import com.example.foodplanner.model.Repository;
 
 import java.util.ArrayList;
 import java.util.List;

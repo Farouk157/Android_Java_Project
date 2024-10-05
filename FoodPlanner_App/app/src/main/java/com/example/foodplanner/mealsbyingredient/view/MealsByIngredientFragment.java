@@ -10,20 +10,24 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.foodplanner.mealbyname.presenter.MealByNamePresenter;
+import com.example.foodplanner.mealdetails.view.MealDetailsFragment;
 import com.example.foodplanner.mealsbyingredient.presenter.*;
 import com.example.foodplanner.R;
-import com.example.foodplanner.mealofday.model.Meal;
+import com.example.foodplanner.model.Meal;
+import com.example.foodplanner.model.Repository;
 import com.example.foodplanner.network.MealsRemoteDataSourceImp;
-import com.example.foodplanner.network.RandomMealClient;
 
 import java.util.ArrayList;
 import java.util.List;
 import com.example.foodplanner.database.*;
-import com.example.foodplanner.mealofday.model.*;
+import com.example.foodplanner.mealbyname.view.*;
 
-public class MealsByIngredientFragment extends Fragment implements MealsByIngredientView {
+public class MealsByIngredientFragment extends Fragment implements MealsByIngredientView, MealsByIngredientAdapter.OnMealClickListener, MealByNameView{
 
     private MealsByIngredientPresenter presenter;
     private RecyclerView recyclerView;
@@ -55,13 +59,7 @@ public class MealsByIngredientFragment extends Fragment implements MealsByIngred
         // Set up RecyclerView and adapter
         recyclerView = view.findViewById(R.id.rv_avail_meals);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter = new MealsByIngredientAdapter(meals, getContext(), new MealsByIngredientAdapter.OnMealClickListener() {
-            @Override
-            public void onMealClick(Meal meal) {
-                // Handle meal click event, e.g., open meal details
-                Log.d("MealsByCountryFragment", "Clicked on meal: " + meal.getStrMeal());
-            }
-        });
+        adapter = new MealsByIngredientAdapter(meals, getContext(), this);
         recyclerView.setAdapter(adapter);
     }
 
@@ -74,7 +72,27 @@ public class MealsByIngredientFragment extends Fragment implements MealsByIngred
     }
 
     @Override
+    public void displayMeal(Meal data) {
+        MealDetailsFragment mealDetailsFragment = MealDetailsFragment.newInstance(data);
+        FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container, mealDetailsFragment);
+        transaction.addToBackStack(null);
+//        Log.d("MealsByCategoryFragment", "Clicked on meal: " + data.getStrArea());
+//        Log.d("MealsByCategoryFragment", "Clicked on meal: " + data.getStrInstructions());
+//        Log.d("MealsByCategoryFragment", "Clicked on meal: " + data.getStrYoutube());
+        transaction.commit();
+    }
+
+    @Override
     public void showError(String message) {
         Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onMealClick(Meal meal) {
+        Log.d("MealsByCountryFragment", "Clicked on meal: " + meal.getStrMeal());
+        MealByNamePresenter mealByNamePresenter = new MealByNamePresenter(this, Repository.getInstance(MealLocalDataSourceImp.getInstance(getActivity()), MealsRemoteDataSourceImp.getInstance()));
+        // Fetch the meal details by name
+        mealByNamePresenter.fetchMealByName(meal.getStrMeal());
     }
 }

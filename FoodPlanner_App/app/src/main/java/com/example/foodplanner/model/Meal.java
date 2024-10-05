@@ -1,4 +1,4 @@
-package com.example.foodplanner.mealofday.model;
+package com.example.foodplanner.model;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

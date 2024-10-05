@@ -14,7 +14,8 @@ import com.example.foodplanner.R;
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
-import com.example.foodplanner.mealofday.model.*;
+import com.example.foodplanner.model.Meal;
+
 import java.util.List;
 
 
@@ -30,10 +31,6 @@ public class FavoriteMealsAdapter extends RecyclerView.Adapter<FavoriteMealsAdap
         this.favoriteMealOnClick = favoriteMealOnClick;
     }
 
-    public void setMeals(List<Meal> meals) {
-        this.meals = meals;
-    }
-
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -43,6 +40,9 @@ public class FavoriteMealsAdapter extends RecyclerView.Adapter<FavoriteMealsAdap
         return vh;
     }
 
+    public void setMeals(List<Meal> meals) {
+        this.meals = meals;
+    }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
@@ -88,6 +88,7 @@ public class FavoriteMealsAdapter extends RecyclerView.Adapter<FavoriteMealsAdap
             favMealCountryTextView = view.findViewById(R.id.tv_fav_meal_country);
             cardView = view.findViewById(R.id.card_fav);
         }
+
     }
 }
 

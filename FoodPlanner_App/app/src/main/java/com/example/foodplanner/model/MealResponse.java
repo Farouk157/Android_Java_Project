@@ -1,4 +1,4 @@
-package com.example.foodplanner.mealofday.model;
+package com.example.foodplanner.model;
 
 import java.util.List;
 

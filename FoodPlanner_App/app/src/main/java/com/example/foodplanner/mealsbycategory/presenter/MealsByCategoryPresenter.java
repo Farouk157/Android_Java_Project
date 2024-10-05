@@ -1,11 +1,12 @@
 package com.example.foodplanner.mealsbycategory.presenter;
 
 import com.example.foodplanner.mealsbycategory.view.MealsByCategoryView;
-import com.example.foodplanner.mealofday.model.Meal;
+import com.example.foodplanner.model.Meal;
+import com.example.foodplanner.model.Repository;
 import com.example.foodplanner.network.*;
 
 import java.util.List;
-import com.example.foodplanner.mealofday.model.*;
+
 
 public class MealsByCategoryPresenter implements NetworkCallBack<List<Meal>>{
 

@@ -1,11 +1,8 @@
 package com.example.foodplanner.mealdetails.presenter;
 
-import com.example.foodplanner.mealofday.model.Meal;
+import com.example.foodplanner.model.Meal;
 import com.example.foodplanner.mealdetails.view.MealDetailsView;
-import com.example.foodplanner.mealofday.model.*;
-import com.example.foodplanner.network.NetworkCallBack;
-
-import java.util.List;
+import com.example.foodplanner.model.Repository;
 
 public class MealDetailsPresenter{
 

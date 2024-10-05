@@ -1,10 +1,9 @@
 package com.example.foodplanner.search.presenter;
 
 import android.util.Log;
-
-import com.example.foodplanner.mealofday.model.*;
+import com.example.foodplanner.model.Meal;
+import com.example.foodplanner.model.Repository;
 import com.example.foodplanner.search.view.SearchOptionsView;
-import com.example.foodplanner.network.MealsRemoteDataSource;
 import com.example.foodplanner.network.NetworkCallBack;
 import com.example.foodplanner.search.model.Category;
 import com.example.foodplanner.network.*;

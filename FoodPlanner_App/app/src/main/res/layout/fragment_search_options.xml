@@ -6,20 +6,21 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF">
 
-    <!-- Fixed Search Bar at the top -->
+    <!-- Adjusted Search Bar with increased top margin -->
     <androidx.appcompat.widget.SearchView
         android:id="@+id/search_bar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/rounded_search_view"
-        android:iconifiedByDefault="false"
-        android:padding="10dp"
+        android:layout_marginTop="25dp"
+    android:background="@drawable/rounded_search_view"
+    android:iconifiedByDefault="false"
+    android:padding="6dp"
     android:queryHint="Search by..."
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintEnd_toEndOf="parent" />
 
+    <!-- Scrollable content below search bar -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -40,13 +41,13 @@
                 android:text="Categories"
                 android:textColor="#212121"
                 android:textSize="22sp"
-            android:textStyle="bold"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="16dp" />
+                android:textStyle="bold"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="16dp" />
 
-            <!-- Horizontal RecyclerView for Categories -->
+            <!-- RecyclerView for Categories -->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_categories"
                 android:layout_width="0dp"
@@ -73,7 +74,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginTop="16dp" />
 
-            <!-- Horizontal RecyclerView for Countries -->
+            <!-- RecyclerView for Countries -->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_countries"
                 android:layout_width="0dp"
@@ -100,7 +101,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginTop="16dp" />
 
-            <!-- Horizontal RecyclerView for Ingredients -->
+            <!-- RecyclerView for Ingredients -->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_ingredients"
                 android:layout_width="0dp"

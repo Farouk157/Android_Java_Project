@@ -1,7 +1,7 @@
 package com.example.foodplanner.search.model;
 
 
-import com.example.foodplanner.mealofday.model.Meal;
+import com.example.foodplanner.model.Meal;
 
 import java.util.List;
 

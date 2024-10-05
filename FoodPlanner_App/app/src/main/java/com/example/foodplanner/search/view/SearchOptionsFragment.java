@@ -15,16 +15,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.foodplanner.mealsbyingredient.view.*;
 import com.example.foodplanner.R;
 import com.example.foodplanner.mealsbycategory.view.MealsByCategoryFragment;
-import com.example.foodplanner.mealofday.model.Meal;
+import com.example.foodplanner.model.Meal;
+import com.example.foodplanner.model.Repository;
 import com.example.foodplanner.network.MealsRemoteDataSourceImp;
-import com.example.foodplanner.network.RandomMealClient;
 import com.example.foodplanner.search.model.Category;
 import com.example.foodplanner.search.presenter.SearchOptionsPresenter;
 import com.example.foodplanner.mealsbycountry.view.*;
 import com.example.foodplanner.database.*;
 import java.util.ArrayList;
 import java.util.List;
-import com.example.foodplanner.mealofday.model.*;
 
 
 public class SearchOptionsFragment extends Fragment implements SearchOptionsView, CategoryAdapter.CategoryClickListener, CountryAdapter.CountryClickListener, IngredientAdapter.IngredientClickListener{

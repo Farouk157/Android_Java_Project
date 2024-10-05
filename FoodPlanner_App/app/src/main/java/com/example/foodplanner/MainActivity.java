@@ -12,6 +12,7 @@ import com.example.foodplanner.mealofday.view.MealOfTheDayFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.example.foodplanner.search.view.SearchOptionsFragment;
 import com.example.foodplanner.favoritemeal.view.*;
+import com.example.foodplanner.calendar.view.*;
 
 public class MainActivity extends AppCompatActivity {
     BottomNavigationView navigationView;
@@ -57,11 +58,24 @@ public class MainActivity extends AppCompatActivity {
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
                     return true;
                 } else if (id == R.id.nav_calender) {
-                    // Handle calendar navigation
+                    Fragment fragment = new RetreiveTypeMeals();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
                     return true;
                 }
                 return false;
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        // Check if the fragment manager has any back stack entries
+        if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
+            // If there are entries in the back stack, pop the back stack
+            getSupportFragmentManager().popBackStack();
+        } else {
+            // If there are no entries, let the system handle the back press (close app)
+            super.onBackPressed();
+        }
     }
 }

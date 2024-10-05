@@ -2,8 +2,8 @@ package com.example.foodplanner.network;
 
 import android.util.Log;
 
-import com.example.foodplanner.mealofday.model.Meal;
-import com.example.foodplanner.mealofday.model.MealResponse;
+import com.example.foodplanner.model.Meal;
+import com.example.foodplanner.model.MealResponse;
 import com.example.foodplanner.search.model.CategoryResponse;
 import com.example.foodplanner.search.model.CountryResponse;
 import com.example.foodplanner.search.model.IngredientResponse;
@@ -192,6 +192,27 @@ public class MealsRemoteDataSourceImp implements MealsRemoteDataSource{
             @Override
             public void onFailure(Call<MealResponse> call, Throwable t) {
                 Log.e("MealsByIngredientPresenter", "API call failed: " + t.getMessage());
+                callback.onFailure("Network error: " + t.getMessage());
+            }
+        });
+    }
+
+    @Override
+    public void fetchMealByName(String mealName, NetworkCallBack<Meal> callback) {
+        Call<MealResponse> call = mealService.getMealByName(mealName);
+        call.enqueue(new Callback<MealResponse>() {
+            @Override
+            public void onResponse(Call<MealResponse> call, Response<MealResponse> response) {
+                if (response.isSuccessful() && response.body() != null && response.body().getMeals() != null && !response.body().getMeals().isEmpty()) {
+                    Meal meal = response.body().getMeals().get(0); // Get the first meal from the list
+                    callback.onSuccess(meal);
+                } else {
+                    callback.onFailure("Failed to fetch meal details.");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<MealResponse> call, Throwable t) {
                 callback.onFailure("Network error: " + t.getMessage());
             }
         });

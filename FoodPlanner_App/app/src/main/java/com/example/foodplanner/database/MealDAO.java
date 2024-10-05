@@ -6,8 +6,7 @@ import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
-
-import com.example.foodplanner.mealofday.model.*;
+import com.example.foodplanner.model.Meal;
 
 import java.util.List;
 @Dao

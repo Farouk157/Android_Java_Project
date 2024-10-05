@@ -1,12 +1,11 @@
-package com.example.foodplanner.mealofday.model;
+package com.example.foodplanner.model;
 
-import android.content.Context;
+import android.net.ConnectivityManager;
 
 import androidx.lifecycle.LiveData;
 
 import com.example.foodplanner.network.*;
 import com.example.foodplanner.database.*;
-import com.example.foodplanner.search.model.Category;
 
 import java.util.List;
 
@@ -56,6 +55,10 @@ public class Repository {
         remoteDataSource.fetchMealsByIngredient(ingredientId, callback);
     }
 
+    public void fetchMealsByName(String mealName,NetworkCallBack<Meal> callback){
+        remoteDataSource.fetchMealByName(mealName, callback);
+    }
+
     public void insertMeal (Meal meal)
     {
         mealLocalDataSource.insertMeal(meal);
@@ -66,6 +69,26 @@ public class Repository {
     }
     public LiveData<List<Meal>> getStoredMeals (){
         return mealLocalDataSource.getAllMeals();
+    }
+
+    public void insertPlan(Plan plan){
+        mealLocalDataSource.insertPlan(plan);
+    }
+
+    public  void deletePlan(Plan plan){
+        mealLocalDataSource.deletePlan(plan);
+    }
+
+    public LiveData<List<Plan>> getMealsByDate(String date) {
+        return mealLocalDataSource.getMealsByDate(date);
+    }
+
+    public LiveData<List<Plan>> getScheduledMeals() {
+        return mealLocalDataSource.getScheduledMeals();
+    }
+
+    public LiveData<List<Plan>> getPlansByType(String type) {
+        return mealLocalDataSource.getMealsByType(type);
     }
 
 }

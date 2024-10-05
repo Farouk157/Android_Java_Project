@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.foodplanner.mealofday.model.*;
+import com.example.foodplanner.model.Meal;
 
 import java.util.List;
 
@@ -64,7 +64,6 @@ public class MealsByCategoryAdapter extends RecyclerView.Adapter<MealsByCategory
             mealImageView = itemView.findViewById(R.id.iv_fav_meal_image);
             mealNameTextView = itemView.findViewById(R.id.tv_fav_meal_name);
 
-            // Set click listener for the meal item
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -85,5 +84,6 @@ public class MealsByCategoryAdapter extends RecyclerView.Adapter<MealsByCategory
                     .load(meal.getStrMealThumb())
                     .into(mealImageView);
         }
+
     }
 }

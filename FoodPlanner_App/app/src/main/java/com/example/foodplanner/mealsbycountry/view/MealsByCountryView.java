@@ -1,6 +1,6 @@
 package com.example.foodplanner.mealsbycountry.view;
 
-import com.example.foodplanner.mealofday.model.Meal;
+import com.example.foodplanner.model.Meal;
 
 import java.util.List;
 

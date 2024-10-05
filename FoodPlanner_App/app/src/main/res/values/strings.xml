@@ -12,4 +12,12 @@
     <string name="country_image_desc">Image representing the country</string>
     <string name="ingredient_image_desc">Image representing the ingredient</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="back"><![CDATA[<-]]></string>
+    <string name="forward"><![CDATA[->]]></string>
+
+
+    <string name="breakfast">Breakfast Image</string>
+    <string name="lunch">Lunch Image</string>
+    <string name="dinner">Dinner Image</string>
 </resources>

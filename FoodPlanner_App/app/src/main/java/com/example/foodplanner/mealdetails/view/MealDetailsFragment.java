@@ -14,18 +14,19 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
+import com.example.foodplanner.calendar.view.*;
 import com.bumptech.glide.Glide;
 import com.example.foodplanner.R;
 import com.example.foodplanner.mealdetails.model.Ingredient;
-import com.example.foodplanner.mealofday.model.Meal;
+import com.example.foodplanner.model.Meal;
 import com.example.foodplanner.mealdetails.presenter.MealDetailsPresenter;
+import com.example.foodplanner.model.Repository;
 import com.example.foodplanner.network.*;
 import java.util.ArrayList;
 import java.util.List;
-import com.example.foodplanner.mealofday.model.*;
 import com.example.foodplanner.database.*;
 
 public class MealDetailsFragment extends Fragment implements MealDetailsView {
@@ -37,6 +38,7 @@ public class MealDetailsFragment extends Fragment implements MealDetailsView {
     private RecyclerView recyclerView;
     private List<Ingredient> ingredientList = new ArrayList<>();
     private ImageButton mealAddToFavBtn;
+    private ImageButton mealAddToCalendarBtn;
     private Meal meal;
 
     public static MealDetailsFragment newInstance(Meal meal) {
@@ -61,6 +63,7 @@ public class MealDetailsFragment extends Fragment implements MealDetailsView {
         webView.setWebViewClient(new WebViewClient());
         webView.getSettings().setJavaScriptEnabled(true);
         mealAddToFavBtn = view.findViewById(R.id.ib_favorite);
+        mealAddToCalendarBtn = view.findViewById(R.id.ib_calendar);
 
         recyclerView = view.findViewById(R.id.rv_ingredients_list);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -79,6 +82,20 @@ public class MealDetailsFragment extends Fragment implements MealDetailsView {
             public void onClick(View view) {
                 presenter.addMeal(meal);
                 Toast.makeText(getActivity(),meal.getStrMeal()+"added to Favourites",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        mealAddToCalendarBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                CalendarFragment calendarFragment = new CalendarFragment();
+                Bundle args = new Bundle();
+                args.putSerializable("meal", meal);
+                calendarFragment.setArguments(args);
+                FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragment_container, calendarFragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
             }
         });
 

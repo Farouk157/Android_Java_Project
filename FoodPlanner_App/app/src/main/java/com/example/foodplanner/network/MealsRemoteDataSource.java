@@ -1,9 +1,6 @@
 package com.example.foodplanner.network;
 
-import android.net.ConnectivityManager;
-
-import com.example.foodplanner.mealofday.model.Meal;
-import com.example.foodplanner.search.model.Category;
+import com.example.foodplanner.model.Meal;
 
 import java.util.List;
 
@@ -16,4 +13,5 @@ public interface MealsRemoteDataSource {
     void fetchMealsByCategory(String categoryId, NetworkCallBack<List<Meal>> callback);
     void fetchMealsByCountry(String countryId,NetworkCallBack<List<Meal>> callback);
     void fetchMealsByIngredient(String ingredientId,NetworkCallBack<List<Meal>> callback);
+    void fetchMealByName(String mealName, NetworkCallBack<Meal> callback);
 }

@@ -5,7 +5,8 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 
 import com.example.foodplanner.favoritemeal.view.*;
-import com.example.foodplanner.mealofday.model.*;
+import com.example.foodplanner.model.Meal;
+import com.example.foodplanner.model.Repository;
 
 import java.util.List;
 

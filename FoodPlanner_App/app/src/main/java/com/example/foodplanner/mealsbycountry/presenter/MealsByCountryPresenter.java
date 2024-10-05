@@ -1,10 +1,9 @@
 package com.example.foodplanner.mealsbycountry.presenter;
 
-import com.example.foodplanner.mealofday.model.Meal;
-import com.example.foodplanner.network.MealsRemoteDataSource;
+import com.example.foodplanner.model.Meal;
+import com.example.foodplanner.model.Repository;
 import com.example.foodplanner.network.NetworkCallBack;
 import com.example.foodplanner.mealsbycountry.view.*;
-import com.example.foodplanner.mealofday.model.*;
 
 import java.util.List;
 

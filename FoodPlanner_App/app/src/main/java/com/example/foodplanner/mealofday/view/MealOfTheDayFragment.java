@@ -13,17 +13,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.foodplanner.R;
-import com.example.foodplanner.database.MealLocalDataSource;
-import com.example.foodplanner.mealofday.model.Meal;
+import com.example.foodplanner.model.Meal;
 import com.example.foodplanner.mealofday.presenter.MealOfTheDayPresenter;
 import com.example.foodplanner.mealdetails.view.MealDetailsFragment;
-import com.example.foodplanner.network.MealsRemoteDataSource;
-import com.example.foodplanner.network.RandomMealClient;
+import com.example.foodplanner.model.Repository;
 import com.example.foodplanner.network.MealsRemoteDataSourceImp;
 
 import java.util.ArrayList;
 import java.util.List;
-import com.example.foodplanner.mealofday.model.*;
 import com.example.foodplanner.database.*;
 //ss
 
